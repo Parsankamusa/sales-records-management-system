@@ -1,16 +1,59 @@
-Main Module Documentation
- The main module provides the core logic to run the customer/sales record management program.
-```
-Overview
-The key functions are:
-```
+## Question 1 
+## Function Definition: 
+* The load_records function is defined with two parameters, customers_file_path and sales_file_path, which are expected to be the file paths to the customer and sales CSV files, respectively
+  ```
+  def main(customers_file_path=None, sales_file_path=None):
+    if customers_file_path and sales_file_path:
+        load_records(customers_file_path, sales_file_path
+  ```
 
+## Loading Customer Records
+* The function starts by opening the customer records CSV file using the open function in read mode ('r').
+* It then creates a csv.DictReader object, which reads the CSV file into a dictionary where each row is a dictionary with keys corresponding to the header names.
+* The function iterates over each row (customer record) in the CSV file.
+* For each row, it adds an entry to the records['customers'] dictionary with the customer * ID (cust_id) as the key and the entire row (which is a dictionary of customer details) as the value.
+  ```
+  def load_records(customers_file_path, sales_file_path):
+    # Load customer records
+    with open(customers_file_path, mode='r', newline='') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            records['customers'][row['cust_id']] = row
+  ```
+## Loading Sales Records:
+* Similarly, the function opens the sales records CSV file in read mode.
+* It creates another csv.DictReader object for the sales records.
+* It then reads all the rows in the sales CSV file and stores them as dictionaries in the records['sales'] list.
+  ```
+  # Load sales records
+    with open(sales_file_path, mode='r', newline='') as file:
+        reader = csv.DictReader(file)
+        records['sales'] = [row for row in reader]
+  ```
+  
+## Data Structure in Memory:
+* The records data structure is a dictionary with two keys: 'customers' and 'sales'.
+* 'customers' is a dictionary itself, with customer IDs as keys and dictionaries of customer details as values.
+* 'sales' is a list, where each element is a dictionary representing a sale record.
+
+## Error Handling
+* The with statement in Python automatically closes the file after the nested block of code is executed, ensuring that file resources are properly released.
+
+## Output
+![console output ](screenshot.jpg)
+
+* Question 2 & 3 I have just advance question 1  and the documentation is in the final code documentation
+## Final code documentation
+## Main Module Documentation
+ The main module provides the core logic to run the customer/sales record management program.
+
+## Overview
+The key functions are:
 * display_menu() - Shows menu options and gets user input
 * main() - Main program logic
   
- ``` 
-Usage
-```
+
+## Usage
 * Run python main.py to start the program. Can optionally pass CSV file paths to load initial data.
 ```
 python main.py customers.csv sales.csv
@@ -20,10 +63,9 @@ Functions
 display_menu()
 Shows a menu prompt and gets user selection.
 ```
-```
 
-Logic:
-```
+## Logic:
+
 * Print menu options
 * Get and return user input choice
 * Example Output:
@@ -51,9 +93,9 @@ Loop:
 Show menu and get choice
 Perform action based on choice
 Exit on 'Quit'
-```
-** Example Usage:
-```
+
+## Example Usage:
+
 customer_mod = CustomerModule()
 sales_mod = SalesModule()
 
@@ -73,13 +115,14 @@ Can specify customer/sales CSV files when running:
 
 python main.py customers.csv sales.csv
 ```
-Customer Module Documentation
-Overview
+
+## Customer Module Documentation
+## Overview
 * The CustomerModule class in customer_module.py provides functionality to manage customer and sales records in Python.
 
 * It can load records from a CSV file, add new customers and sales through a CLI, save records back to CSV, and analyze monthly sales performance.
 
-Usage
+## Usage
 * To use the module:
 
 * Create an instance of CustomerModule
@@ -105,7 +148,7 @@ Initializes the class instance:
 * load_customers_and_sales()
 * Loads customer and sales data from a CSV file.
 
-Parameters:
+## Parameters:
 
 file_path: Path to CSV file
 Logic:
@@ -116,7 +159,7 @@ Logic:
 * save_customers_and_sales_to_csv()
 * Saves customer and sales records to a CSV file.
 
-Parameters:
+## Parameters:
 
 file_path: Path to write CSV file
 Logic:
@@ -126,9 +169,8 @@ Logic:
 * Write each customer record (excluding sales details)
 * add_new_customer()
 * Adds a new customer by prompting user for details.
-```
-Logic:
-```
+* 
+## Logic:
 * Prompt for name, postcode, phone number
 * Generate new customer ID
 * Append new record to array
