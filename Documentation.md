@@ -40,7 +40,7 @@
 * The with statement in Python automatically closes the file after the nested block of code is executed, ensuring that file resources are properly released.
 
 ## Output
-![console output ](screenshot.jpg)
+![console output ](screenshot.png)
 
 * Question 2 & 3 I have just advance question 1  and the documentation is in the final code documentation
 ## Final code documentation
